@@ -4984,9 +4984,6 @@ _⫹⫺ Fitur : 200_
 
 -- *C R E D I T S* --
 Tuhan Yang Maha Esa
-DikaArdnt As Developer
-NazeDev As Owner Base
-Papah As Recode
 KyuraSaja
 Nurutomo
 Contributors in GitHub
@@ -4994,8 +4991,7 @@ RestAPI
 BochilGaming
 Mayumi Kun
 Iqbal
-Eren
-User Sad Bot`
+Eren`
                 let buttons = [{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
             papah.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: nyoutube, mentions: ments})
             }
