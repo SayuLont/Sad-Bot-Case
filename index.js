@@ -221,7 +221,7 @@ async function startpapah() {
 	for (let i of kon) {
 	    list.push({
 	    	displayName: await papah.getName(i + '@s.whatsapp.net'),
-	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await papah.getName(i + '@s.whatsapp.net')}\nFN:${await papah.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET:papahdev@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/papah.dev\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
+	    	vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await papah.getName(i + '@s.whatsapp.net')}\nFN:${await papah.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET: ikyiiadsreal@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://instagram.com/ikiyyye\nitem3.X-ABLabel:Instagram\nitem4.ADR:;;Indonesia;;;;\nitem4.X-ABLabel:Region\nEND:VCARD`
 	    })
 	}
 	papah.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
